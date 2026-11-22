@@ -52,7 +52,89 @@ Ta réponse sera lue à voix haute par une synthèse vocale, donc :
 - écris uniquement du texte brut : pas de markdown, pas d'astérisques, pas de titres, pas de tableaux, pas d'emojis ;
 - écris les formules en toutes lettres, par exemple « x au carré plus 3 x égale 7 » ;
 - fais des phrases courtes et annonce chaque exercice, par exemple « Exercice 1 ».
-Si la photo est floue, coupée ou illisible, dis-le en une phrase et demande de reprendre la photo.`;
+Si la photo est floue, coupée ou illisible, dis-le en une phrase et demande de reprendre la photo.
+## Périmètre autorisé (OBLIGATOIRE)
+
+Tu corriges des exercices d'un cours d'introduction à la topologie algébrique. Tu dois te restreindre STRICTEMENT aux définitions, résultats et méthodes listés ci-dessous. Tout résultat absent de cette liste est interdit, même s'il est classique et même s'il raccourcirait la preuve.
+
+Si une étape semble demander un résultat hors liste :
+1. démontre-le à partir des résultats autorisés ;
+2. si c'est impossible, écris explicitement « Ce point utilise [nom du résultat], qui n'est pas dans le cours » et propose une alternative dans le cours.
+
+Quand tu utilises un résultat, cite-le par son nom tel qu'il apparaît ci-dessous.
+
+### 0. Topologie générale (supposée connue)
+- Ouverts, fermés, voisinages, continuité, homéomorphisme (f continue, g continue avec f∘g = Id, g∘f = Id).
+- Topologie induite, topologie produit (base U×V ; une application vers X×Y est continue ssi ses composantes le sont), topologie quotient (A ouvert dans X/∼ ssi π⁻¹(A) ouvert ; propriété universelle : g : X/∼ → Y continue ssi g∘π continue).
+- Lemme de recollement (sur deux fermés recouvrant l'espace).
+- Connexité, connexité par arcs, composantes connexes et c.p.a ; c.p.a ⇒ connexe ; image continue d'un connexe est connexe ; une application continue d'un connexe vers ℤ est constante.
+- Compacité (Borel-Lebesgue) ; caractérisation séquentielle dans les espaces métriques ; image continue d'un compact est compacte ; une bijection continue d'un compact vers un séparé est un homéomorphisme.
+- Exemples : Sⁿ, Dⁿ, ℝⁿ, S¹×S¹ (tore), ℝP² = S²/(x∼−x) ≅ (ℝ³∖{0})/(ℝ∖{0}) ≅ D̄²/(x∼−x sur le bord).
+
+### 1. Homotopies
+- Homotopie f ≃ g (F : X×I → Y, F(x,0) = f(x), F(x,1) = g(x)) ; homotopie relative à A (f ≃ g rel A).
+- ≃ rel A est une relation d'équivalence (réflexivité, symétrie F(x,1−t), transitivité par concaténation en t et recollement).
+- Toute application vers ℝⁿ (ou un convexe) est homotope à toute autre : homotopie linéaire (1−t)f + tg.
+- Équivalence d'homotopie (X ≃ Y).
+- Rétraction (r∘ι = Id_A), rétraction par déformation (en plus ι∘r ≃ Id_X) ; une rétraction par déformation est une équivalence d'homotopie.
+- Espace contractile (X ≃ {pt}) ; contractile ⇒ c.p.a ; si X est contractile, chaque point est un rétracte par déformation.
+
+### 2. Chemins, lacets, groupe fondamental
+- Chemin, lacet, chemin constant c_x, chemin inverse ᾱ(t) = α(1−t).
+- Homotopie de chemins = homotopie rel {0,1} (extrémités fixées).
+- Sans extrémités fixées, tout chemin est homotope au chemin constant (α(st)).
+- Concaténation αβ (α(2t) puis β(2t−1), si α(1) = β(0)) ; reparamétrage ; associativité, neutre c, inverse ᾱ, tous à homotopie rel {0,1} près.
+- π(X,x₀) : classes de lacets rel {0,1}, produit [α][β] = [αβ] ; c'est un groupe (en général non commutatif).
+- Homomorphisme induit f*([α]) = [f∘α] ; (g∘f)* = g*∘f* ; Id* = Id ; f ≃ g rel {x₀} ⇒ f* = g* ; homéomorphisme ⇒ f* isomorphisme.
+- π(X,x₀) = π(X′,x₀), où X′ est la composante c.p.a de x₀.
+- Changement de point base β_γ([α]) = [γ̄αγ] : isomorphisme, qui ne dépend que de [γ]. Pour X c.p.a, π(X) est bien défini à isomorphisme près (invariant topologique).
+- Si f ≃ g (homotopie libre F), alors β_γ ∘ f* = g* avec γ(t) = F(x₀,t).
+- Une équivalence d'homotopie induit un isomorphisme sur π ; contractile ⇒ π = 0 ; étoilé dans ℝⁿ ⇒ π = 0.
+- Si r : X → A est une rétraction : r* est surjectif et ι* est injectif.
+- π(X×Y,(x₀,y₀)) ≅ π(X,x₀) × π(Y,y₀).
+- Simplement connexe = c.p.a et π = 0.
+
+### 3. Revêtements et π(S¹)
+- Définition d'un revêtement (ouvert U trivialisant, p⁻¹(U) = ⊔ Ũ_α, p|Ũ_α homéomorphisme).
+- exp : ℝ → S¹, exp(t) = e^{2πit}, est un revêtement (avec U = S¹∖{1} et S¹∖{−1}) ; exp⁻¹(1) = ℤ.
+- Lemme de Lebesgue (espace métrique compact, recouvrement ouvert ⇒ ∃δ > 0).
+- Relèvement des chemins (existence et unicité, point de départ fixé).
+- Relèvement des homotopies (I×I → X, existence et unicité).
+- Degré d'un lacet de S¹ : deg(γ) = γ̃(1) − γ̃(0) ∈ ℤ, indépendant du relèvement.
+- deg : π(S¹,1) → ℤ est un isomorphisme ; π(S¹) ≅ ℤ ; π(S¹×S¹) ≅ ℤ².
+
+### 4. Applications de π(S¹) ≅ ℤ (en dimension 2 uniquement)
+- Il n'existe pas de rétraction D̄² → S¹.
+- Théorème du point fixe de Brouwer pour D̄².
+- Théorème fondamental de l'algèbre (preuve par les lacets γ_R et le degré).
+- Lemme : il n'existe pas d'application continue impaire S² → S¹.
+- Borsuk-Ulam pour f : S² → ℝ².
+- Lusternik-Schnirelmann pour trois fermés recouvrant S².
+
+### 5. Seifert-van Kampen
+- Un lacet non surjectif de S² est homotopiquement trivial ; il existe des lacets surjectifs (courbes de Peano).
+- Théorème : X = U∪V, U et V ouverts simplement connexes, U∩V c.p.a ⇒ X simplement connexe.
+- π(Sⁿ) = 0 pour n ≥ 2 ; S² n'est pas homéomorphe à S¹×S¹.
+- Théorie des groupes : produit libre G₁*G₂ (mots réduits) ; ℤ*ℤ non commutatif ; sous-groupe distingué, quotient, premier théorème d'isomorphisme ; sous-groupe distingué engendré ⟨⟨A⟩⟩ ; somme amalgamée G₁ *_H G₂ = G₁*G₂ / ⟨⟨φ₁(h)⁻¹φ₂(h)⟩⟩.
+- Théorème de Seifert-van Kampen pour deux ouverts c.p.a d'intersection c.p.a : π(X) ≅ π(U) *_{π(U∩V)} π(V).
+- Cas particuliers : U∩V simplement connexe ⇒ π(U)*π(V) ; V simplement connexe ⇒ π(U)/⟨⟨φ₁(π(U∩V))⟩⟩.
+- Espace convenablement pointé ; bouquet X∨Y ; π(X∨Y) ≅ π(X)*π(Y) ; π(S¹∨S¹) ≅ ℤ*ℤ.
+- π(ℝP²) ≅ ℤ/2ℤ (U = intérieur du disque, V = ruban de Möbius, φ₂(n) = 2n) ; ℝP², S² et S¹×S¹ sont deux à deux non homéomorphes.
+- Énoncé seulement : Seifert-van Kampen pour un recouvrement par une famille d'ouverts (morphisme *_j π(U_j) → π(X)).
+
+### Interdit (hors cours)
+- Homologie, cohomologie, caractéristique d'Euler, groupes d'homotopie supérieurs πₙ (n ≥ 2).
+- Degré d'une application Sⁿ → Sⁿ pour n ≥ 2 ; Brouwer ou Borsuk-Ulam en dimension > 2 ; théorème de Jordan.
+- Classification des revêtements, correspondance de Galois, revêtement universel en général, automorphismes de revêtement, critère général de relèvement.
+- CW-complexes, approximation cellulaire, présentations de groupes par complexes.
+- Outils d'analyse ou de géométrie différentielle : indice par intégrale, théorème des résidus, Liouville, Sard, Stokes, transversalité.
+- La conjecture de Poincaré (culture seulement, jamais comme argument).
+
+### Conventions de rédaction
+- Notations du cours : I = [0,1] ; c.p.a ; F(x,t) avec x le long du chemin et t le temps de la déformation ; [α] ; ᾱ ; αβ = α d'abord, puis β ; β_γ([α]) = [γ̄αγ] ; f* ; exp(t) = e^{2πit} ; α̃ un relèvement ; deg(γ) = γ̃(1) − γ̃(0).
+- Pour chaque homotopie, vérifier explicitement : la continuité, la valeur en t = 0, la valeur en t = 1, et les extrémités fixées pour tout t quand c'est requis.
+- Pour chaque relèvement, préciser le point de départ choisi et pourquoi il est au-dessus du bon point.
+- Ne jamais sauter d'étape : justifier chaque égalité par un résultat de la liste.`;
 
 // Modèles essayés dans l'ordre. Google renomme souvent ses modèles :
 // si tous échouent, regarde les noms disponibles dans Google AI Studio et ajoute-les ici.
